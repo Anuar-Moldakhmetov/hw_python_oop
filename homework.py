@@ -44,7 +44,7 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        raise NotImplementedError
+        raise NotImplementedError("Вы не переопределили метод")
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
@@ -113,6 +113,8 @@ def read_package(workout_type: str, data: list[Union[int, float]]) -> Training:
                           'WLK': SportsWalking}
     if workout_type in workout_dict:
         return workout_dict[workout_type](*data)
+    else:
+        raise NotImplementedError("Этой тренировки нет в словаре")
 
 
 def main(training: Training) -> None:
